@@ -1,0 +1,126 @@
+import React, { useState } from 'react';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Slider from '@material-ui/core/Slider';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import { DollarInput, PercentageInput } from './InputHelpers';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: theme.spacing(5),
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    alignSelf: 'flex-end',
+  },
+}));
+
+const Calculator = () => {
+  const classes = useStyles();
+  const [withdrawalAmount, setWithdrawalAmount] = useState('10000');
+  const [age, setAge] = useState(25);
+  const [retirementAge, setRetirementAge] = useState(65);
+  const [salary, setSalary] = useState('40000');
+  const [superContribution, setSuperContribution] = useState('9.5');
+
+  const calculate = () => {
+    console.log('Withdrawal amount', withdrawalAmount);
+    console.log('Age', age);
+    console.log('Retirement age', retirementAge);
+    console.log('Salary', salary);
+    console.log('Super contribution', superContribution);
+  };
+
+  return (
+    <Paper className={classes.container} elevation={3}>
+      <Grid container direction="column" justify="center" spacing={3}>
+        <Grid item>
+          <TextField
+            id="input-withdrawal"
+            label="Super withdrawal amount"
+            value={withdrawalAmount}
+            onChange={(event) => {
+              setWithdrawalAmount(event.target.value);
+            }}
+            variant="outlined"
+            InputProps={{
+              inputComponent: DollarInput,
+            }}
+            fullWidth
+          />
+        </Grid>
+        <Grid item>
+          <Typography id="input-age-title" gutterBottom>
+            {`Age: ${age} years old`}
+          </Typography>
+          <Slider
+            value={age}
+            onChange={(event, value) => setAge(value)}
+            getAriaValueText={(value) => `${value} years old`}
+            aria-labelledby="input-age-title"
+            step={1}
+            min={15}
+            max={99}
+            valueLabelDisplay="auto"
+          />
+        </Grid>
+        <Grid item>
+          <Typography id="input-retirement-age-title" gutterBottom>
+            {`Desired retirement age: ${retirementAge} years old`}
+          </Typography>
+          <Slider
+            value={retirementAge}
+            onChange={(event, value) => setRetirementAge(value)}
+            getAriaValueText={(value) => `${value} years old`}
+            aria-labelledby="input-retirement-age-title"
+            step={1}
+            min={25}
+            max={99}
+            valueLabelDisplay="auto"
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            id="input-salary"
+            label="Salary (annual)"
+            value={salary}
+            onChange={(event) => {
+              setSalary(event.target.value);
+            }}
+            variant="outlined"
+            InputProps={{
+              inputComponent: DollarInput,
+            }}
+            fullWidth
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            id="input-contribution"
+            label="Super contribution"
+            value={superContribution}
+            onChange={(event) => {
+              setSuperContribution(event.target.value);
+            }}
+            variant="outlined"
+            InputProps={{
+              inputComponent: PercentageInput,
+            }}
+            fullWidth
+          />
+        </Grid>
+      </Grid>
+      <Button className={classes.button} variant="contained" color="primary" onClick={calculate}>
+        Calculate
+      </Button>
+    </Paper>
+  );
+};
+
+export default Calculator;
