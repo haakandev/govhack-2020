@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/govhack-2020/static/css/main.5f361e03.chunk.css",
+    "main.js": "/govhack-2020/static/js/main.ae09c0c4.chunk.js",
+    "main.js.map": "/govhack-2020/static/js/main.ae09c0c4.chunk.js.map",
+    "runtime-main.js": "/govhack-2020/static/js/runtime-main.74ad7797.js",
+    "runtime-main.js.map": "/govhack-2020/static/js/runtime-main.74ad7797.js.map",
+    "static/js/2.9f78f03e.chunk.js": "/govhack-2020/static/js/2.9f78f03e.chunk.js",
+    "static/js/2.9f78f03e.chunk.js.map": "/govhack-2020/static/js/2.9f78f03e.chunk.js.map",
+    "index.html": "/govhack-2020/index.html",
+    "precache-manifest.bfd109a73d298afa460b6566455c694a.js": "/govhack-2020/precache-manifest.bfd109a73d298afa460b6566455c694a.js",
+    "service-worker.js": "/govhack-2020/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/govhack-2020/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.9f78f03e.chunk.js.LICENSE.txt": "/govhack-2020/static/js/2.9f78f03e.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/govhack-2020/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.74ad7797.js",
+    "static/js/2.9f78f03e.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.ae09c0c4.chunk.js"
+  ]
+}
