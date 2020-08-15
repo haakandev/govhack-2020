@@ -35,7 +35,7 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
         ...item, base: parseInt(item.base, 10), extra: parseInt(item.extra, 10), baseColor: 'blue', withExtraColor: 'red',
       })));
     }, 500);
-  }, result);
+  }, [result.graphData]);
 
   const tryAgain = () => {
     scrollToRef(calculatorContainer);
