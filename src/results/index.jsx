@@ -74,9 +74,10 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
-              legend: 'Super balance',
+              legend: 'Super balance (thousand dollars)',
               legendPosition: 'middle',
               legendOffset: -65,
+              format: (value) => formatMoney(value / 1000),
             }}
             enableLabel={false}
             tooltip={({
