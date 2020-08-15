@@ -18,7 +18,7 @@ export const scrollToRef = (ref) => {
   }
 };
 
-export const formatMoney = (amount) => {
+export const formatNumber = (amount) => {
   const decimalCount = 0;
   const decimal = '.';
   const thousands = ',';
@@ -27,5 +27,7 @@ export const formatMoney = (amount) => {
   const i = parseInt(Math.abs(Number(amount) || 0).toFixed(decimalCount), 10).toString();
   const j = (i.length > 3) ? i.length % 3 : 0;
 
-  return `$${negativeSign}${(j ? i.substr(0, j) + thousands : '')}${i.substr(j).replace(/(\d{3})(?=\d)/g, `$1${thousands}`)}${(decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : '')}`;
+  return `${negativeSign}${(j ? i.substr(0, j) + thousands : '')}${i.substr(j).replace(/(\d{3})(?=\d)/g, `$1${thousands}`)}${(decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : '')}`;
 };
+
+export const formatMoney = (amount) => `$${formatNumber(amount)}`;

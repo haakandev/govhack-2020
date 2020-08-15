@@ -14,9 +14,11 @@ import Arrow from '@material-ui/icons/PlayArrowOutlined';
 import Help from '@material-ui/icons/HelpOutlineOutlined';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 import { makeStyles } from '@material-ui/core/styles';
-import { calculatePostTaxIncome, formatMoney, scrollToRef } from '../utils';
+import {
+  calculatePostTaxIncome, formatMoney, formatNumber, scrollToRef,
+} from '../utils';
 import InfoTooltip from './InfoTooltip';
-import { YEARS_OF_WORK_TOOLTIP } from '../constants';
+import { COFFEE_CUPS_TOOLTIP, YEARS_OF_WORK_TOOLTIP } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -157,6 +159,13 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                   <Arrow />
                   {`Another ${result.yearsToCatchUp} years of work `}
                   <IconButton aria-label="more information" fontSize="small" onClick={() => setTooltip(YEARS_OF_WORK_TOOLTIP(formatMoney(result.salary), formatMoney(calculatePostTaxIncome(result.salary))))}>
+                    <Help />
+                  </IconButton>
+                </Typography>
+                <Typography variant="body1" className={classes.listItem}>
+                  <Arrow />
+                  {`${formatNumber(result.lostSuper / 4)} cups of coffee `}
+                  <IconButton aria-label="more information" fontSize="small" onClick={() => setTooltip(COFFEE_CUPS_TOOLTIP)}>
                     <Help />
                   </IconButton>
                 </Typography>
