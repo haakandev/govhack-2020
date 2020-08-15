@@ -11,10 +11,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Info from '@material-ui/icons/Info';
 import { DollarInput, PercentageInput } from './InputHelpers';
 import {
-  CONTRIBUTIONS_TITLE,
-  CONTRIBUTIONS_INFO,
-  YEARLY_RETURNS_TITLE,
-  YEARLY_RETURNS_INFO,
+  CONTRIBUTIONS_TOOLTIP,
+  SALARY_TOOLTIP,
+  YEARLY_RETURNS_TOOLTIP,
 } from '../constants';
 import { calculatePostTaxIncome } from '../utils';
 import InfoTooltip from './InfoTooltip';
@@ -139,6 +138,16 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
             variant="outlined"
             InputProps={{
               inputComponent: DollarInput,
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="show more information"
+                    onClick={() => setTooltip(SALARY_TOOLTIP)}
+                  >
+                    <Info />
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
             fullWidth
           />
@@ -158,10 +167,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
                 <InputAdornment position="end">
                   <IconButton
                     aria-label="show more information"
-                    onClick={() => setTooltip({
-                      title: CONTRIBUTIONS_TITLE,
-                      text: CONTRIBUTIONS_INFO,
-                    })}
+                    onClick={() => setTooltip(CONTRIBUTIONS_TOOLTIP)}
                   >
                     <Info />
                   </IconButton>
@@ -186,10 +192,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
                 <InputAdornment position="end">
                   <IconButton
                     aria-label="show more information"
-                    onClick={() => setTooltip({
-                      title: YEARLY_RETURNS_TITLE,
-                      text: YEARLY_RETURNS_INFO,
-                    })}
+                    onClick={() => setTooltip(YEARLY_RETURNS_TOOLTIP)}
                   >
                     <Info />
                   </IconButton>
