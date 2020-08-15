@@ -45,7 +45,7 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
     <Paper className={classes.container} elevation={3} ref={ref}>
       <Grid container direction="column" justify="center" spacing={3}>
         <Grid item>
-          <Typography variant="h1">
+          <Typography variant="h3">
             Results
           </Typography>
         </Grid>
@@ -81,19 +81,38 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
             }}
             enableLabel={false}
             tooltip={({
-              id, value, color, index,
+              index,
             }) => (
-              <strong style={{ color }}>
-                {id === 'base' ? 'Regular contributions' : 'If not withdrawn'}
-                :
-                {' '}
-                {formatMoney(id === 'base' ? value : value + data[index].base)}
-              </strong>
+              <>
+                <strong style={{ color: '#779ecb' }}>
+                  If not withdrawn:
+                  {' '}
+                  {formatMoney(data[index].base + data[index].extra)}
+                  <br />
+                  Regular contributions:
+                  {' '}
+                  {formatMoney(data[index].base)}
+                </strong>
+              </>
             )}
             animate
             motionStiffness={120}
             motionDamping={40}
           />
+        </Grid>
+        <Grid item>
+          <Typography variant="h4">
+            Summary
+          </Typography>
+          <Typography variant="body1">
+            {`When you retire after ${result.yearsToRetirement}, you will be ${formatMoney(result.lostSuper)} worse off. Is it worth it?`}
+          </Typography>
+          <Typography variant="h6">
+            That is equivalent to...
+          </Typography>
+          <Typography variant="body1">
+            {`- Another ${result.yearsToCatchUp} years of work`}
+          </Typography>
         </Grid>
       </Grid>
       <Button className={classes.button} variant="contained" color="primary" onClick={tryAgain}>

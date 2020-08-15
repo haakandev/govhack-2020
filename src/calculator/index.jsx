@@ -42,24 +42,16 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
     }
 
     const annualContribution = salary * (superContribution / 100);
-    const graphData = Array.from({ length: retirementAge - age }).reduce((total, _, index) => {
-      if (index === 0) {
-        return [...total, {
-          year: 1,
-          base: annualContribution,
-          extra: annualContribution + withdrawalAmount * (1 + YEARLY_RETURNS),
-        }];
-      }
-      return [...total, {
-        year: index + 1,
-        base: total[index - 1].base * (1 + YEARLY_RETURNS) + annualContribution,
-        extra: total[index - 1].extra * (1 + YEARLY_RETURNS),
-      }];
-    }, []);
+    const graphData = Array.from({ length: retirementAge - age })
+      .reduce((total, _, index) => [...total, {
+        year: `${index + 1}`,
+        base: total[index].base * (1 + YEARLY_RETURNS) + annualContribution,
+        extra: total[index].extra * (1 + YEARLY_RETURNS),
+      }], [{ year: '0', base: 0, extra: withdrawalAmount }]);
     const graphKeys = ['base', 'extra'];
 
     onResult({
-      yearsToCatchUp, superContribution, lostSuper, graphData, graphKeys,
+      yearsToCatchUp, superContribution, lostSuper, graphData, graphKeys, yearsToRetirement: yearsLeft,
     });
   };
 
