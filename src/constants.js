@@ -27,7 +27,7 @@ export const YEARLY_RETURNS_TOOLTIP = {
 };
 export const CONTRIBUTIONS_TOOLTIP = {
   title: 'Super contribtuions',
-  text: 'Currently your employer is required to contribute at least 9.5% of your salary to your super. If you are able to make larger contributions you can greatly increase your super!\n\nNote that if you contribute more than $25,000/year you will not get the same tax benefits on the full amount.',
+  text: `Currently your employer is required to contribute at least 9.5% of your salary to your super. If you are able to make larger contributions you can greatly increase your super!${'\n\n'}Note that if you contribute more than $25,000/year you will not get the same tax benefits on the full amount.`,
   sources: ['5'],
 };
 export const SALARY_TOOLTIP = {

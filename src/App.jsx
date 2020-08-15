@@ -8,6 +8,7 @@ import Calculator from './components/Calculator';
 import Results from './components/Results';
 import Sources from './components/Sources';
 import { scrollToRef } from './utils';
+import { ReactComponent as Logo } from './logo.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,6 +42,9 @@ function App() {
       <CssBaseline />
       <Container maxWidth="lg" className={classes.root} ref={containerRef}>
         <Grid container direction="column" justify="center" spacing={3}>
+          <Grid item align="center">
+            <Logo style={{ width: '100%' }} />
+          </Grid>
           <Grid item>
             <Calculator onResult={setResult} ref={calculatorRef} resultsContainer={resultsRef} />
           </Grid>

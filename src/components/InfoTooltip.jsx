@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     transform: 'translate(-50%, -50%)',
   },
+  text: {
+    whiteSpace: 'pre-wrap',
+  },
   sources: {
     marginTop: theme.spacing(2),
   },
@@ -47,7 +50,7 @@ const InfoTooltip = ({
     >
       <div className={classes.modal}>
         <Typography variant="h5" id="modal-title">{title}</Typography>
-        <Typography variant="body1" id="modal-description">{text}</Typography>
+        <Typography variant="body1" id="modal-description" className={classes.text}>{text}</Typography>
         {sources && (
           <Typography className={classes.sources} variant="body2" id="modal-sources">
             Sources:
