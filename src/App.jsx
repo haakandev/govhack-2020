@@ -4,8 +4,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import appTheme from './theme';
-import Calculator from './components/calculator';
-import Results from './components/results';
+import Calculator from './components/Calculator';
+import Results from './components/Results';
+import Sources from './components/Sources';
 import { scrollToRef } from './utils';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,6 +50,9 @@ function App() {
             <Results result={result} ref={resultsRef} calculatorContainer={calculatorRef} />
           </Grid>
           )}
+          <Grid item>
+            <Sources />
+          </Grid>
         </Grid>
       </Container>
     </ThemeProvider>

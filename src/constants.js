@@ -23,6 +23,7 @@ export const TAX_BANDS = [{
 export const YEARLY_RETURNS_TOOLTIP = {
   title: 'Expected yearly returns',
   text: 'Over the last 40 years, super has returned an average of 10.4% per year, or 6.2% adjusted for CPI',
+  sources: ['2'],
 };
 export const CONTRIBUTIONS_TOOLTIP = {
   title: 'Super contribtuions',
@@ -30,5 +31,11 @@ export const CONTRIBUTIONS_TOOLTIP = {
 };
 export const SALARY_TOOLTIP = {
   title: 'Typical salary',
-  text: 'The average salary in Australia is $89,123. The median is only $60,000.',
+  text: 'The average salary in Australia 2017 was $59,328. The median was $49,397.',
+  sources: ['1'],
 };
+export const YEARS_OF_WORK_TOOLTIP = (income, postTaxIncome) => ({
+  title: 'How did we calculate this',
+  text: `With an income of ${income}, you would have ${postTaxIncome} left after tax. With that we calculated how many years it would take to earn the amount lost by withdrawing super early.`,
+  sources: ['3'],
+});

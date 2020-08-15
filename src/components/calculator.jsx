@@ -64,6 +64,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
     const graphKeys = ['base', 'extra'];
 
     onResult({
+      salary,
       yearsToCatchUp,
       superContribution,
       lostSuper,
@@ -78,8 +79,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
       <InfoTooltip
         open={!!tooltip}
         handleClose={() => setTooltip(null)}
-        title={tooltip && tooltip.title}
-        text={tooltip && tooltip.text}
+        tooltip={tooltip}
       />
       <Grid container direction="column" justify="center" spacing={3}>
         <Grid item>
