@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/govhack-2020/precache-manifest.58dff5c479dacbd56fb461a77b57f7c4.js"
+  "/govhack-2020/precache-manifest.49222b3746e44c040fbfb1b19f437cfc.js"
 );
 
 self.addEventListener('message', (event) => {
