@@ -14,6 +14,6 @@ export const calculatePostTaxIncome = (income) => {
 
 export const scrollToRef = (ref) => {
   if (ref.current) {
-    window.scrollTo(0, ref.current.offsetTop);
+    ref.current.scrollIntoView({ behavior: 'smooth' });
   }
 };
