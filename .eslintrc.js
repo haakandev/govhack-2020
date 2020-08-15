@@ -19,6 +19,7 @@ module.exports = {
   ],
   rules: {
     "react/prop-types": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   },
 };

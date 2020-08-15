@@ -7,6 +7,8 @@ import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { DollarInput, PercentageInput } from './InputHelpers';
+import { YEARLY_RETURNS } from '../constants';
+import { calculatePostTaxIncome } from '../utils';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Calculator = () => {
+const Calculator = React.forwardRef(({ onResult }, ref) => {
   const classes = useStyles();
   const [withdrawalAmount, setWithdrawalAmount] = useState('10000');
   const [age, setAge] = useState(25);
@@ -30,15 +32,19 @@ const Calculator = () => {
   const [superContribution, setSuperContribution] = useState('9.5');
 
   const calculate = () => {
-    console.log('Withdrawal amount', withdrawalAmount);
-    console.log('Age', age);
-    console.log('Retirement age', retirementAge);
-    console.log('Salary', salary);
-    console.log('Super contribution', superContribution);
+    const yearsLeft = retirementAge - age;
+    const lostSuper = withdrawalAmount * (1 + YEARLY_RETURNS) ** yearsLeft;
+    let yearsToCatchUp = 0;
+    let cumulativeAnnualIncome = 0;
+    for (let i = 0; cumulativeAnnualIncome < lostSuper; i++) {
+      yearsToCatchUp += 1;
+      cumulativeAnnualIncome += calculatePostTaxIncome(parseInt(salary, 10));
+    }
+    onResult({ yearsToCatchUp, superContribution, lostSuper });
   };
 
   return (
-    <Paper className={classes.container} elevation={3}>
+    <Paper className={classes.container} elevation={3} ref={ref}>
       <Grid container direction="column" justify="center" spacing={3}>
         <Grid item>
           <TextField
@@ -121,6 +127,6 @@ const Calculator = () => {
       </Button>
     </Paper>
   );
-};
+});
 
 export default Calculator;
