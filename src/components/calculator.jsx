@@ -10,7 +10,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Info from '@material-ui/icons/Info';
 import { DollarInput, PercentageInput } from './InputHelpers';
-import { YEARLY_RETURNS, YEARLY_RETURNS_TITLE, YEARLY_RETURNS_INFO } from '../constants';
+import {
+  CONTRIBUTIONS_TITLE,
+  CONTRIBUTIONS_INFO,
+  YEARLY_RETURNS_TITLE,
+  YEARLY_RETURNS_INFO,
+} from '../constants';
 import { calculatePostTaxIncome } from '../utils';
 import InfoTooltip from './InfoTooltip';
 
@@ -35,11 +40,11 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
   const [retirementAge, setRetirementAge] = useState(65);
   const [salary, setSalary] = useState('40000');
   const [superContribution, setSuperContribution] = useState('9.5');
-  const [yearlyReturns, setYearlyReturns] = useState('9.5');
+  const [yearlyReturns, setYearlyReturns] = useState('10.4');
 
   const calculate = () => {
     const yearsLeft = retirementAge - age;
-    const lostSuper = withdrawalAmount * (1 + YEARLY_RETURNS) ** yearsLeft;
+    const lostSuper = withdrawalAmount * (1 + yearlyReturns / 100) ** yearsLeft;
     let yearsToCatchUp = 0;
     let cumulativeAnnualIncome = 0;
     while (cumulativeAnnualIncome < lostSuper) {
@@ -49,11 +54,14 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
 
     const annualContribution = salary * (superContribution / 100);
     const graphData = Array.from({ length: retirementAge - age })
-      .reduce((total, _, index) => [...total, {
-        year: `${index + 1}`,
-        base: total[index].base * (1 + YEARLY_RETURNS) + annualContribution,
-        extra: total[index].extra * (1 + YEARLY_RETURNS),
-      }], [{ year: '0', base: 0, extra: withdrawalAmount }]);
+      .reduce((total, _, index) => [
+        ...total,
+        {
+          year: `${index + 1}`,
+          base: total[index].base * (1 + yearlyReturns / 100) + annualContribution,
+          extra: total[index].extra * (1 + yearlyReturns / 100),
+        },
+      ], [{ year: '0', base: 0, extra: withdrawalAmount }]);
     const graphKeys = ['base', 'extra'];
 
     onResult({
@@ -146,6 +154,19 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
             variant="outlined"
             InputProps={{
               inputComponent: PercentageInput,
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="show more information"
+                    onClick={() => setTooltip({
+                      title: CONTRIBUTIONS_TITLE,
+                      text: CONTRIBUTIONS_INFO,
+                    })}
+                  >
+                    <Info />
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
             fullWidth
           />
@@ -164,7 +185,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
-                    aria-label="toggle password visibility"
+                    aria-label="show more information"
                     onClick={() => setTooltip({
                       title: YEARLY_RETURNS_TITLE,
                       text: YEARLY_RETURNS_INFO,
