@@ -8,7 +8,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Info from '@material-ui/icons/Info';
+import Info from '@material-ui/icons/InfoOutlined';
 import { DollarInput, PercentageInput } from './InputHelpers';
 import {
   CONTRIBUTIONS_TOOLTIP,
