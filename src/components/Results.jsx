@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Arrow from '@material-ui/icons/PlayArrowOutlined';
 import Help from '@material-ui/icons/HelpOutlineOutlined';
+import OpenInNew from '@material-ui/icons/OpenInNew';
 import { makeStyles } from '@material-ui/core/styles';
 import { calculatePostTaxIncome, formatMoney, scrollToRef } from '../utils';
 import InfoTooltip from './InfoTooltip';
@@ -26,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
   graphContainer: {
     height: 300,
   },
+  accordionDetails: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
   listItem: {
     display: 'flex',
     alignItems: 'center',
@@ -35,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
   const classes = useStyles();
   const [tooltip, setTooltip] = useState();
+  const [expandedTip, setExpandedTip] = React.useState(false);
   const [data, setData] = useState(result.graphData.map(
     (item) => ({ ...item, base: 0, extra: 0 }),
   ));
@@ -46,6 +57,10 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
       })));
     }, 500);
   }, [result.graphData]);
+
+  const handleChangedTip = (panel) => (event, isExpanded) => {
+    setExpandedTip(isExpanded ? panel : false);
+  };
 
   const tryAgain = () => {
     scrollToRef(calculatorContainer);
@@ -136,6 +151,90 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                     <Help />
                   </IconButton>
                 </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h4">
+                  What are your alternatives?
+                </Typography>
+                <Typography variant="body1">
+                  What you can do instead depends on your personal circumstances and why you are considering withdrawing super early.
+                  While we cannot tell you the best solution, here are some suggestions that hopefully can help you avoid having
+                  to withdraw super early and lose out on benefits of longterm investments.
+                </Typography>
+                <Accordion expanded={expandedTip === 'panel1'} onChange={handleChangedTip('panel1')}>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography variant="button">If your income has been affected...</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails className={classes.accordionDetails}>
+                    <Typography>
+                      Check out JobSeeker, it provides financial help if you are looking
+                      for work or if you are sick or injured and cannot work.
+                    </Typography>
+                    <Link
+                      className={classes.listItem}
+                      href="https://www.servicesaustralia.gov.au/individuals/services/centrelink/jobseeker-payment"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Read more
+                      {' '}
+                      <OpenInNew fontSize="small" />
+                    </Link>
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expandedTip === 'panel2'} onChange={handleChangedTip('panel2')}>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2bh-content"
+                    id="panel2bh-header"
+                  >
+                    <Typography variant="button">If you are struggling to make rent...</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails className={classes.accordionDetails}>
+                    <Typography>
+                      Especially in tough economic times, many people struggle to make rent and keep a roof over their head.
+                      It can be very stressful. Make sure you have a look at Rent Assistance as it can give you a helping hand.
+                    </Typography>
+                    <Link
+                      className={classes.listItem}
+                      href="https://www.servicesaustralia.gov.au/individuals/services/centrelink/rent-assistance"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Read more
+                      {' '}
+                      <OpenInNew fontSize="small" />
+                    </Link>
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expandedTip === 'panel3'} onChange={handleChangedTip('panel3')}>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel3bh-content"
+                    id="panel3bh-header"
+                  >
+                    <Typography variant="button">If you are self-isolating in Victoria...</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails className={classes.accordionDetails}>
+                    <Typography>
+                      If you are required to self-isolate and unable to earn an income, you can quality for Pandemic Leave Disaster Payment.
+                    </Typography>
+                    <Link
+                      className={classes.listItem}
+                      href="https://www.servicesaustralia.gov.au/individuals/services/centrelink/pandemic-leave-disaster-payment"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Read more
+                      {' '}
+                      <OpenInNew fontSize="small" />
+                    </Link>
+                  </AccordionDetails>
+                </Accordion>
               </Grid>
             </Grid>
             <Button className={classes.button} variant="contained" color="primary" onClick={tryAgain}>
