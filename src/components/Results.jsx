@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
+  textBottomMargin: {
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
@@ -122,7 +125,7 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                         {' '}
                         {formatMoney(data[index].base + data[index].extra)}
                         <br />
-                        Regular contributions:
+                        If withdrawn:
                         {' '}
                         {formatMoney(data[index].base)}
                       </strong>
@@ -134,12 +137,18 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                 />
               </Grid>
               <Grid item>
-                <Typography variant="h4">
+                <Typography variant="h4" className={classes.textBottomMargin}>
                   Summary
                 </Typography>
                 <Typography variant="body1">
-                  {`When you retire after ${result.yearsToRetirement}, you will be ${formatMoney(result.lostSuper)} worse off. `}
-                  <strong>Is it worth it?</strong>
+                  {'So withdrawing '}
+                  <strong>{formatMoney(result.withdrawalAmount)}</strong>
+                  {' today leaves you with '}
+                  <strong>{formatMoney(result.lostSuper)}</strong>
+                  {' less when you retire.'}
+                </Typography>
+                <Typography variant="body1" className={classes.textBottomMargin}>
+                  <strong>Is it still worth it?</strong>
                 </Typography>
                 <Typography variant="h6">
                   {`${formatMoney(result.lostSuper)} is equivalent to...`}
@@ -153,13 +162,15 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="h4">
+                <Typography variant="h4" className={classes.textBottomMargin}>
                   What are your alternatives?
                 </Typography>
-                <Typography variant="body1">
-                  What you can do instead depends on your personal circumstances and why you are considering withdrawing super early.
-                  While we cannot tell you the best solution, here are some suggestions that hopefully can help you avoid having
-                  to withdraw super early and lose out on benefits of longterm investments.
+                <Typography variant="body1" className={classes.textBottomMargin}>
+                  What you can do instead depends on your personal circumstances and why
+                  you are considering withdrawing super early. While we cannot tell you
+                  the best solution, here are some suggestions that hopefully can help
+                  you avoid having to withdraw super early and lose out on benefits of
+                  longterm investments.
                 </Typography>
                 <Accordion expanded={expandedTip === 'panel1'} onChange={handleChangedTip('panel1')}>
                   <AccordionSummary
@@ -196,8 +207,10 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                   </AccordionSummary>
                   <AccordionDetails className={classes.accordionDetails}>
                     <Typography>
-                      Especially in tough economic times, many people struggle to make rent and keep a roof over their head.
-                      It can be very stressful. Make sure you have a look at Rent Assistance as it can give you a helping hand.
+                      Especially in tough economic times, many people struggle to make
+                      rent and keep a roof over their head. It can be very stressful.
+                      Make sure you have a look at Rent Assistance as it can give you
+                      a helping hand.
                     </Typography>
                     <Link
                       className={classes.listItem}
@@ -221,7 +234,8 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                   </AccordionSummary>
                   <AccordionDetails className={classes.accordionDetails}>
                     <Typography>
-                      If you are required to self-isolate and unable to earn an income, you can quality for Pandemic Leave Disaster Payment.
+                      If you are required to self-isolate and unable to earn an income,
+                      you can quality for Pandemic Leave Disaster Payment.
                     </Typography>
                     <Link
                       className={classes.listItem}

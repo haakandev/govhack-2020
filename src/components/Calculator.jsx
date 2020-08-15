@@ -71,6 +71,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
       graphData,
       graphKeys,
       yearsToRetirement: yearsLeft,
+      withdrawalAmount,
     });
   };
 

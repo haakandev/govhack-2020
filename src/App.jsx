@@ -44,11 +44,10 @@ function App() {
           <Grid item>
             <Calculator onResult={setResult} ref={calculatorRef} resultsContainer={resultsRef} />
           </Grid>
-          {result
-          && (
-          <Grid item>
-            <Results result={result} ref={resultsRef} calculatorContainer={calculatorRef} />
-          </Grid>
+          {result && (
+            <Grid item>
+              <Results result={result} ref={resultsRef} calculatorContainer={calculatorRef} />
+            </Grid>
           )}
           <Grid item>
             <Sources />
