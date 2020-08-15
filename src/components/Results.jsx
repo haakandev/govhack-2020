@@ -156,17 +156,17 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                   {`${formatMoney(result.lostSuper)} is equivalent to...`}
                 </Typography>
                 <Typography variant="body1" className={classes.listItem}>
-                  <Arrow />
+                  <Arrow color="primary" />
                   {`Another ${result.yearsToCatchUp} years of work `}
                   <IconButton aria-label="more information" fontSize="small" onClick={() => setTooltip(YEARS_OF_WORK_TOOLTIP(formatMoney(result.salary), formatMoney(calculatePostTaxIncome(result.salary))))}>
-                    <Help />
+                    <Help color="primary" />
                   </IconButton>
                 </Typography>
                 <Typography variant="body1" className={classes.listItem}>
-                  <Arrow />
+                  <Arrow color="primary" />
                   {`${formatNumber(result.lostSuper / 4)} cups of coffee `}
                   <IconButton aria-label="more information" fontSize="small" onClick={() => setTooltip(COFFEE_CUPS_TOOLTIP)}>
-                    <Help />
+                    <Help color="primary" />
                   </IconButton>
                 </Typography>
               </Grid>
@@ -183,7 +183,7 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                 </Typography>
                 <Accordion expanded={expandedTip === 'panel1'} onChange={handleChangedTip('panel1')}>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon color="primary" />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                   >
@@ -208,7 +208,7 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                 </Accordion>
                 <Accordion expanded={expandedTip === 'panel2'} onChange={handleChangedTip('panel2')}>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon color="primary" />}
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                   >
@@ -235,7 +235,7 @@ const Result = React.forwardRef(({ result, calculatorContainer }, ref) => {
                 </Accordion>
                 <Accordion expanded={expandedTip === 'panel3'} onChange={handleChangedTip('panel3')}>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon color="primary" />}
                     aria-controls="panel3bh-content"
                     id="panel3bh-header"
                   >

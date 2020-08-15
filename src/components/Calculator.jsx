@@ -145,7 +145,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
                     aria-label="show more information"
                     onClick={() => setTooltip(SALARY_TOOLTIP)}
                   >
-                    <Info />
+                    <Info color="primary" />
                   </IconButton>
                 </InputAdornment>
               ),
@@ -170,7 +170,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
                     aria-label="show more information"
                     onClick={() => setTooltip(CONTRIBUTIONS_TOOLTIP)}
                   >
-                    <Info />
+                    <Info color="primary" />
                   </IconButton>
                 </InputAdornment>
               ),
@@ -195,7 +195,7 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
                     aria-label="show more information"
                     onClick={() => setTooltip(YEARLY_RETURNS_TOOLTIP)}
                   >
-                    <Info />
+                    <Info color="primary" />
                   </IconButton>
                 </InputAdornment>
               ),
