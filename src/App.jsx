@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
     '& > *': {
       maxWidth: 800,
-      width: 500,
+      width: '100%',
       minHeight: 200,
     },
   },
@@ -38,7 +38,7 @@ function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <CssBaseline />
-      <Container maxWidth="sm" className={classes.root} ref={containerRef}>
+      <Container maxWidth="lg" className={classes.root} ref={containerRef}>
         <Grid container direction="column" justify="center" spacing={3}>
           <Grid item>
             <Calculator onResult={setResult} ref={calculatorRef} resultsContainer={resultsRef} />
