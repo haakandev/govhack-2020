@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "69bf43a2f4391c8d4153e3641b67807c",
+    "revision": "1c97a8689bfd5ed4d42afd8ef7d627be",
     "url": "/govhack-2020/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/govhack-2020/static/js/2.130a122d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4fbe4d37297309fba546",
-    "url": "/govhack-2020/static/js/main.c12473ba.chunk.js"
+    "revision": "df759f02b3f9efdce3aa",
+    "url": "/govhack-2020/static/js/main.68d0536e.chunk.js"
   },
   {
     "revision": "6f6ae7cceebb55e22c8b",
