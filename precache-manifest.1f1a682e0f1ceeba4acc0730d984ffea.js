@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9be4555e650ead71832eb5ccd528400a",
+    "revision": "f40a84a7929109cca9a7de6a23c0caab",
     "url": "/govhack-2020/index.html"
   },
   {
