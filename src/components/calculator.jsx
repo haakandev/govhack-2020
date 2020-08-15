@@ -3,12 +3,16 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Info from '@material-ui/icons/Info';
 import { DollarInput, PercentageInput } from './InputHelpers';
-import { YEARLY_RETURNS } from '../constants';
+import { YEARLY_RETURNS, YEARLY_RETURNS_TITLE, YEARLY_RETURNS_INFO } from '../constants';
 import { calculatePostTaxIncome } from '../utils';
+import InfoTooltip from './InfoTooltip';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,18 +29,20 @@ const useStyles = makeStyles((theme) => ({
 
 const Calculator = React.forwardRef(({ onResult }, ref) => {
   const classes = useStyles();
+  const [tooltip, setTooltip] = useState();
   const [withdrawalAmount, setWithdrawalAmount] = useState('10000');
   const [age, setAge] = useState(25);
   const [retirementAge, setRetirementAge] = useState(65);
   const [salary, setSalary] = useState('40000');
   const [superContribution, setSuperContribution] = useState('9.5');
+  const [yearlyReturns, setYearlyReturns] = useState('9.5');
 
   const calculate = () => {
     const yearsLeft = retirementAge - age;
     const lostSuper = withdrawalAmount * (1 + YEARLY_RETURNS) ** yearsLeft;
     let yearsToCatchUp = 0;
     let cumulativeAnnualIncome = 0;
-    for (let i = 0; cumulativeAnnualIncome < lostSuper; i++) {
+    while (cumulativeAnnualIncome < lostSuper) {
       yearsToCatchUp += 1;
       cumulativeAnnualIncome += calculatePostTaxIncome(parseInt(salary, 10));
     }
@@ -51,12 +57,23 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
     const graphKeys = ['base', 'extra'];
 
     onResult({
-      yearsToCatchUp, superContribution, lostSuper, graphData, graphKeys, yearsToRetirement: yearsLeft,
+      yearsToCatchUp,
+      superContribution,
+      lostSuper,
+      graphData,
+      graphKeys,
+      yearsToRetirement: yearsLeft,
     });
   };
 
   return (
     <Paper className={classes.container} elevation={3} ref={ref}>
+      <InfoTooltip
+        open={!!tooltip}
+        handleClose={() => setTooltip(null)}
+        title={tooltip && tooltip.title}
+        text={tooltip && tooltip.text}
+      />
       <Grid container direction="column" justify="center" spacing={3}>
         <Grid item>
           <TextField
@@ -129,6 +146,34 @@ const Calculator = React.forwardRef(({ onResult }, ref) => {
             variant="outlined"
             InputProps={{
               inputComponent: PercentageInput,
+            }}
+            fullWidth
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            id="input-expected-yearly"
+            label="Expected yearly returns"
+            value={yearlyReturns}
+            onChange={(event) => {
+              setYearlyReturns(event.target.value);
+            }}
+            variant="outlined"
+            InputProps={{
+              inputComponent: PercentageInput,
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => setTooltip({
+                      title: YEARLY_RETURNS_TITLE,
+                      text: YEARLY_RETURNS_INFO,
+                    })}
+                  >
+                    <Info />
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
             fullWidth
           />

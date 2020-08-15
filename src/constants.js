@@ -20,3 +20,6 @@ export const TAX_BANDS = [{
   max: Infinity,
   rate: 0.45,
 }];
+
+export const YEARLY_RETURNS_TITLE = 'Expected yearly returns';
+export const YEARLY_RETURNS_INFO = 'Over the last 40 years, super has returned an average of 10.4% per year, or 6.2% adjusted for CPI';
