@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -17,12 +18,20 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: theme.spacing(4),
     '& > *': {
       maxWidth: 800,
       width: '100%',
       minHeight: 200,
     },
+  },
+  banner: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: '#FD745A',
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+    marginBottom: theme.spacing(2),
+    width: '100%',
   },
 }));
 
@@ -39,12 +48,12 @@ function App() {
 
   return (
     <ThemeProvider theme={appTheme}>
+      <Box className={classes.banner}>
+        <Logo style={{ width: '100%' }} />
+      </Box>
       <CssBaseline />
       <Container maxWidth="lg" className={classes.root} ref={containerRef}>
         <Grid container direction="column" justify="center" spacing={3}>
-          <Grid item align="center">
-            <Logo style={{ width: '100%' }} />
-          </Grid>
           <Grid item>
             <Calculator onResult={setResult} ref={calculatorRef} resultsContainer={resultsRef} />
           </Grid>
