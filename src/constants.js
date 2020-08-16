@@ -32,12 +32,12 @@ export const CONTRIBUTIONS_TOOLTIP = {
 };
 export const SALARY_TOOLTIP = {
   title: 'Typical salary',
-  text: 'The average salary in Australia 2017 was $59,328. The median was $49,397.',
+  text: 'The average salary in Australia 2018 was $61,450. The median was $51,126.',
   sources: ['1'],
 };
 export const YEARS_OF_WORK_TOOLTIP = (income, postTaxIncome) => ({
   title: 'How did we calculate this',
-  text: `With an income of ${income}, you would have ${postTaxIncome} left after tax. With that we calculated how many years it would take to earn the amount lost by withdrawing super early.`,
+  text: `With an income of ${income}, you would have ${postTaxIncome} left after tax (based on 2018 tax data). With that we calculated how many years it would take to earn the amount lost by withdrawing super early.`,
   sources: ['3'],
 });
 export const COFFEE_CUPS_TOOLTIP = {

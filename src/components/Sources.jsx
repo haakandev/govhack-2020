@@ -26,9 +26,9 @@ const Sources = () => {
             Sources
           </Typography>
           <Typography variant="body2" id="sources-1">
-            1. ATO Taxation Statistics, 2016-2017.
+            1. ATO Taxation Statistics, 2017-2018.
             <Link
-              href="https://data.gov.au/data/dataset/taxation-statistics-2016-17/resource/61b5ba05-c38c-4551-b669-864d9d29a120?view_id=972b872d-348a-4a77-8a99-b1514e9e48d3"
+              href="https://data.gov.au/data/dataset/taxation-statistics-2017-18/resource/de2ebe4a-b17f-491e-931a-a820fa97fee8"
               target="_blank"
               rel="noopener noreferrer"
             >
