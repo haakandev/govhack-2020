@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/govhack-2020/static/js/main.fb2e96f3.chunk.js",
-    "main.js.map": "/govhack-2020/static/js/main.fb2e96f3.chunk.js.map",
+    "main.js": "/govhack-2020/static/js/main.faf27ffa.chunk.js",
+    "main.js.map": "/govhack-2020/static/js/main.faf27ffa.chunk.js.map",
     "runtime-main.js": "/govhack-2020/static/js/runtime-main.030201eb.js",
     "runtime-main.js.map": "/govhack-2020/static/js/runtime-main.030201eb.js.map",
     "static/js/2.89ee2ec0.chunk.js": "/govhack-2020/static/js/2.89ee2ec0.chunk.js",
     "static/js/2.89ee2ec0.chunk.js.map": "/govhack-2020/static/js/2.89ee2ec0.chunk.js.map",
     "index.html": "/govhack-2020/index.html",
-    "precache-manifest.bcfcc5f5e7ff0de694048b5388d7c7ec.js": "/govhack-2020/precache-manifest.bcfcc5f5e7ff0de694048b5388d7c7ec.js",
+    "precache-manifest.bb8d6530a0d863db6f4c00f8e2897cc9.js": "/govhack-2020/precache-manifest.bb8d6530a0d863db6f4c00f8e2897cc9.js",
     "service-worker.js": "/govhack-2020/service-worker.js",
     "static/js/2.89ee2ec0.chunk.js.LICENSE.txt": "/govhack-2020/static/js/2.89ee2ec0.chunk.js.LICENSE.txt",
     "static/media/logo.92bce84b.svg": "/govhack-2020/static/media/logo.92bce84b.svg"
@@ -15,6 +15,6 @@
   "entrypoints": [
     "static/js/runtime-main.030201eb.js",
     "static/js/2.89ee2ec0.chunk.js",
-    "static/js/main.fb2e96f3.chunk.js"
+    "static/js/main.faf27ffa.chunk.js"
   ]
 }
